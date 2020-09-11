@@ -142,18 +142,47 @@ public class PMDarpanUtility implements PMDarpanCode {
     }
 
     public List<PMDarpanModel> getDarpanModel(Date dateString, String path) throws Exception {
-        /*
-        List<PMDarpanData> pmdarpandata = getDarpanData(dateString, path);
-        for (PMDarpanData tr : pmdarpandata) {
-            KPIDetails kpiData = new KPIDetails();
-            kpiData.setGroupId(tr.getGroupId());
-            kpiData.setDatadate(dateFormat.format(tr.getDataDate()));
-            kpiData.setLValue(tr.getLvl1Code() + "," + tr.getLvl2Code() + "," + tr.getLvl3Code());
-            kpiData.setKValue(tr.getKpi1Data() + "," + tr.getKpi2Data() + "," + tr.getKpi3Data() + "," + tr.getKpi4Data() + "," + tr.getKpi5Data());
-            ListKpidata.add(kpiData);
-        }*/
 
         List<KPIDetails> ListKpidata = new ArrayList<KPIDetails>();
+//        List<PMDarpanData> pmdarpandata = getDarpanData(dateString, path);
+//        for (PMDarpanData tr : pmdarpandata) {
+        KPIDetails kpiData = new KPIDetails();
+        kpiData.setGroupId(1);
+        kpiData.setLValue("91");
+        kpiData.setDatadate("04/30/2020");
+        kpiData.setKValue("93,522,238.88999999999996,428.96000000000004");
+        ListKpidata.add(kpiData);
+
+        kpiData = new KPIDetails();
+        kpiData.setGroupId(1);
+        kpiData.setLValue("91");
+        kpiData.setDatadate("05/31/2020");
+        kpiData.setKValue("767,593,881.2999999999998,804.1199999999998");
+        ListKpidata.add(kpiData);
+
+        kpiData = new KPIDetails();
+        kpiData.setGroupId(1);
+        kpiData.setLValue("91");
+        kpiData.setDatadate("06/30/2020");
+        kpiData.setKValue("1784,296,860.3800000000001,1063.2500000000002");
+        ListKpidata.add(kpiData);
+
+        kpiData = new KPIDetails();
+        kpiData.setGroupId(1);
+        kpiData.setLValue("91");
+        kpiData.setDatadate("07/31/2020");
+        kpiData.setKValue("456,911,823.45,661.064");
+        ListKpidata.add(kpiData);
+
+        kpiData = new KPIDetails();
+        kpiData.setGroupId(1);
+        kpiData.setLValue("91");
+        kpiData.setDatadate("08/30/2020");
+        kpiData.setKValue("804,676,699.65,491.15999999999997");
+        ListKpidata.add(kpiData);
+
+//        }*/
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         List<PMDarpanModel> records = new ArrayList<PMDarpanModel>();
         PMDarpanModel darpanModel = new PMDarpanModel();
@@ -175,6 +204,39 @@ public class PMDarpanUtility implements PMDarpanCode {
         List<PMDarpanModel> darpanModel = getDarpanModel(date, path);
 
         //2. Serialize the list of KPIData to json string
+        /*
+        String jsonString =
+                "{\n" +
+                "    \"Instance_Code\": 1,\n" +
+                "    \"Sec_Code\": 29,\n" +
+                "    \"Ministry_Code\": 39,\n" +
+                "    \"Dept_Code\": 72,\n" +
+                "    \"Project_Code\": 100138,\n" +
+                "    \"Group_Id\": \"1\",\n" +
+                "    \"DataPortMethod\": 1,\n" +
+                "    \"Frequency_Id\": 1,\n" +
+                "    \"Atmpt\": 0,\n" +
+                "    \"Lvl1_code\": 91,\n" +
+                "\n" +
+                "    \"ListKpidata\": [\n" +
+                "      {\n" +
+                "        \"Group_Id\": 1,\n" +
+                "        \"LValue\": \"91\",\n" +
+                "        \"datadate\": \"04/30/2020\",\n" +
+                "        \"KValue\": \"93,522,238.88999999999996,428.96000000000004\",\n" +
+//                "        \"datadate\": \"05/31/2020\",\n" +
+//                "        \"KValue\": \"767,593,881.2999999999998,804.1199999999998\",\n" +
+//                "        \"datadate\": \"06/30/2020\",\n" +
+//                "        \"KValue\": \"1784,296,860.3800000000001,1063.2500000000002\",\n" +
+//                "        \"datadate\": \"07/31/2020\",\n" +
+//                "        \"KValue\": \"456,911,823.45,661.064\",\n" +
+//                "        \"datadate\": \"08/31/2020\",\n" +
+//                "        \"KValue\": \"804,676,699.65,491.15999999999997\"\n" +
+                "      }\n" +
+                "    ]\n" +
+                "  }";
+            JSONObject jsonObject = new JSONObject(jsonString);
+        */
         String jsonString = new Gson().toJson(darpanModel);
 
         //3. Compress the json string
@@ -195,7 +257,6 @@ public class PMDarpanUtility implements PMDarpanCode {
         ProjrctKpiDetails.put("IP", jsonObj);
         ProjrctKpiDetails.put("EncyptedData", EncyptedData);
         jsonArray.put(ProjrctKpiDetails);
-
         return jsonArray.toString();
     }
 

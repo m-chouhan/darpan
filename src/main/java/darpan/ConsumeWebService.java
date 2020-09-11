@@ -174,7 +174,7 @@ public class ConsumeWebService extends HttpServlet implements PMDarpanCode {
         else System.out.println("File "+ newFile.getAbsolutePath() +  " Present!");
 
         ConsumeWebService webService = new ConsumeWebService();
-        webService.consumeREST(fileName);
-        //webService.postRESTDashboard(new Date(), fileName);
+        //webService.consumeREST(fileName);
+        webService.postRESTDashboard(new Date(), fileName);
     }
 }
