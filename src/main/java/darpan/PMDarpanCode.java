@@ -22,6 +22,6 @@ public interface PMDarpanCode {
     public static final int deptCode = 72; //As provided by DARPAN Dashboard.
     public static final int secCode = 29; //As provided by DARPAN Dashboard.
     public static final int groupId = 0; //As provided by DARPAN Dashboard.
-    public static final int frequencyId = 0;
+    public static final int frequencyId = 1;
     public static final int atmpt = 0;
 }

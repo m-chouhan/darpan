@@ -146,42 +146,42 @@ public class PMDarpanUtility implements PMDarpanCode {
         List<KPIDetails> ListKpidata = new ArrayList<KPIDetails>();
 //        List<PMDarpanData> pmdarpandata = getDarpanData(dateString, path);
 //        for (PMDarpanData tr : pmdarpandata) {
-        KPIDetails kpiData = new KPIDetails();
+        /*KPIDetails kpiData = new KPIDetails();
         kpiData.setGroupId(1);
         kpiData.setLValue("91");
         kpiData.setDatadate("04/30/2020");
         kpiData.setKValue("93,522,238.88999999999996,428.96000000000004");
         ListKpidata.add(kpiData);
-
-        kpiData = new KPIDetails();
+        */
+        /*
+        KPIDetails kpiData = new KPIDetails();
         kpiData.setGroupId(1);
         kpiData.setLValue("91");
         kpiData.setDatadate("05/31/2020");
         kpiData.setKValue("767,593,881.2999999999998,804.1199999999998");
         ListKpidata.add(kpiData);
-
-        kpiData = new KPIDetails();
+        /**/
+        /*
+        KPIDetails kpiData = new KPIDetails();
         kpiData.setGroupId(1);
         kpiData.setLValue("91");
         kpiData.setDatadate("06/30/2020");
         kpiData.setKValue("1784,296,860.3800000000001,1063.2500000000002");
         ListKpidata.add(kpiData);
 
-        kpiData = new KPIDetails();
+        KPIDetails kpiData = new KPIDetails();
         kpiData.setGroupId(1);
         kpiData.setLValue("91");
         kpiData.setDatadate("07/31/2020");
         kpiData.setKValue("456,911,823.45,661.064");
         ListKpidata.add(kpiData);
-
-        kpiData = new KPIDetails();
+        */
+        KPIDetails kpiData = new KPIDetails();
         kpiData.setGroupId(1);
         kpiData.setLValue("91");
-        kpiData.setDatadate("08/30/2020");
+        kpiData.setDatadate("08/31/2020");
         kpiData.setKValue("804,676,699.65,491.15999999999997");
-        ListKpidata.add(kpiData);
-
-//        }*/
+        ListKpidata.add(kpiData); /**/
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         List<PMDarpanModel> records = new ArrayList<PMDarpanModel>();
