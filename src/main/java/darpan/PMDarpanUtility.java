@@ -28,16 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 //import static util.BaseHibernateDAO.closeSession;
 
-public class PMDarpanUtility {
-
-    public static final int instanceCode = 0;  //As provided by DARPAN Dashboard.
-    public static final int projectCode = 0; //As provided by DARPAN Dashboard.
-    public static final int ministryCode = 0; //As provided by DARPAN Dashboard.
-    public static final int deptCode = 0; //As provided by DARPAN Dashboard.
-    public static final int secCode = 0; //As provided by DARPAN Dashboard.
-    public static final int groupId = 0; //As provided by DARPAN Dashboard.
-    public static final int frequencyId = 0;
-    public static final int atmpt = 0;
+public class PMDarpanUtility implements PMDarpanCode {
 
     public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -151,16 +142,16 @@ public class PMDarpanUtility {
     }
 
     public List<PMDarpanModel> getDarpanModel(Date dateString, String path) throws Exception {
-
-//        List<PMDarpanData> pmdarpandata = getDarpanData(dateString, path);
-//        for (PMDarpanData tr : pmdarpandata) {
-//            KPIDetails kpiData = new KPIDetails();
-//            kpiData.setGroupId(tr.getGroupId());
-//            kpiData.setDatadate(dateFormat.format(tr.getDataDate()));
-//            kpiData.setLValue(tr.getLvl1Code() + "," + tr.getLvl2Code() + "," + tr.getLvl3Code());
-//            kpiData.setKValue(tr.getKpi1Data() + "," + tr.getKpi2Data() + "," + tr.getKpi3Data() + "," + tr.getKpi4Data() + "," + tr.getKpi5Data());
-//            ListKpidata.add(kpiData);
-//        }
+        /*
+        List<PMDarpanData> pmdarpandata = getDarpanData(dateString, path);
+        for (PMDarpanData tr : pmdarpandata) {
+            KPIDetails kpiData = new KPIDetails();
+            kpiData.setGroupId(tr.getGroupId());
+            kpiData.setDatadate(dateFormat.format(tr.getDataDate()));
+            kpiData.setLValue(tr.getLvl1Code() + "," + tr.getLvl2Code() + "," + tr.getLvl3Code());
+            kpiData.setKValue(tr.getKpi1Data() + "," + tr.getKpi2Data() + "," + tr.getKpi3Data() + "," + tr.getKpi4Data() + "," + tr.getKpi5Data());
+            ListKpidata.add(kpiData);
+        }*/
 
         List<KPIDetails> ListKpidata = new ArrayList<KPIDetails>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -178,10 +169,10 @@ public class PMDarpanUtility {
         return records;
     }
     /**/
-    public String getData(Date dateString, String path) throws Exception {
+    public String getData(Date date, String path) throws Exception {
 
         //1. Get the Darpan Model Data
-        List<PMDarpanModel> darpanModel = getDarpanModel(dateString, path);
+        List<PMDarpanModel> darpanModel = getDarpanModel(date, path);
 
         //2. Serialize the list of KPIData to json string
         String jsonString = new Gson().toJson(darpanModel);

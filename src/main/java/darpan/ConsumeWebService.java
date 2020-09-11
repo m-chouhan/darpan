@@ -1,26 +1,23 @@
 package darpan;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import javax.servlet.http.HttpServlet;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-//import javax.ws.rs.GET;
-//import javax.ws.rs.Path;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
-import java.util.Date;
 import java.text.SimpleDateFormat;
-import javax.servlet.http.HttpServlet;
-
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.json.JSONArray;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -31,7 +28,6 @@ public class ConsumeWebService extends HttpServlet implements PMDarpanCode {
     PMDarpanUtility du = new PMDarpanUtility();
 
     final String GetDateRangeAPIUrl = "http://prayasapi.darpan.nic.in/getdate";
-
     final String PushDataAPIUrl = "http://prayasapi.darpan.nic.in/pushdata";
 
     Date date = new Date();
@@ -123,9 +119,9 @@ public class ConsumeWebService extends HttpServlet implements PMDarpanCode {
             /*Create POST request for http://prayasapi.darpan.nic.in/pushdata */
             HttpPost postRequest = new HttpPost(PushDataAPIUrl);
             postRequest.addHeader("content-type", "application/json");
-
-            //System.out.println("Final-"+du.getData(date, path));
-            StringEntity userEntity = new StringEntity(du.getData(date, path));
+            String data = du.getData(date, path);
+            System.out.println("data -" + data);
+            StringEntity userEntity = new StringEntity(data);
             postRequest.setEntity(userEntity);
 
             start = du.getCurrentTimeStamp();
@@ -175,9 +171,10 @@ public class ConsumeWebService extends HttpServlet implements PMDarpanCode {
         File newFile = new File(fileName);
         if(!newFile.exists())
             throw new FileNotFoundException(fileName);
-        else System.out.println("File "+ newFile.getAbsolutePath() +  "Present!");
+        else System.out.println("File "+ newFile.getAbsolutePath() +  " Present!");
 
         ConsumeWebService webService = new ConsumeWebService();
-        webService.postRESTDashboard(new Date(), fileName);
+        webService.consumeREST(fileName);
+        //webService.postRESTDashboard(new Date(), fileName);
     }
 }
